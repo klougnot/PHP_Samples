@@ -1,8 +1,15 @@
-CREATE TABLE images (
+CREATE TABLE test1 (
        id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
        image MEDIUMBLOB NOT NULL,
-       PRIMARY KEY (id)
+       PRIMARY KEY (id) 
+  
        );
+
+ALTER TABLE images ENGINE = InnoDB;
+
+If using mysqli prepared statements you must set the table to InnoDB in order for the prepared statements to execute. 
+If using bluehost you will need to go into phpMYadmin and set this value manually by clicking on table option, selecting InnoDb 
+from the drop down and clicking the go button.
        
        
        Source: https://blogs.oracle.com/oswald/entry/php_s_mysqli_extension_storing
