@@ -1,0 +1,154 @@
+<!--
+<!doctype html>
+<html>
+   <body>
+      
+      <form action="multi-handler.php" method="POST" enctype="multipart/form-data">
+         <input type="file" name="image" />
+         <input type="submit"/>
+      </form>
+      
+   </body>
+</html>
+-->
+
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+
+<body>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Nice image capture button</title>
+</head>
+
+<body>
+<?php
+  
+ /*
+flat_array makes the $_FILES[ much more user friendly
+Array ( [0] => Array ( [name] => cat1.jpg [type] => image/jpeg [tmp_name] => C:\Windows\Temp\phpEF73.tmp [error] => 0 		[size] => 9511 ) 
+*/
+ function flat_array($vector) { 
+    $result = array(); 
+    foreach($vector as $key1 => $value1) 
+        foreach($value1 as $key2 => $value2) 
+            $result[$key2][$key1] = $value2; 
+    return $result; 
+} 
+
+
+/*insert_images accepts an html file array from a multi part html form where the name of the html file array is named with [] brackets  ie. <input type="file" accept="image/*;capture=camera" name="files[]">*/
+function insert_image($html_file_array){
+	if(isset($_FILES[$html_file_array])){
+	
+	$f_array = flat_array($_FILES[$html_file_array]);
+	foreach ($f_array as $key => $value){
+			//insert $value['name'];	
+			$tmp_name= $value['tmp_name'];
+			$size=$value['size'];
+			$name=$value['name'];
+			/*It is necessary to check to see if the value of the file name is empty
+			  to prevent index not found error when calling file_get_contents
+			*/
+
+					if($tmp_name!="" or $tmp_name!=NULL)
+			{$data= file_get_contents($value['tmp_name']);
+			
+  					require_once('dbconnect.php');
+					$stmt = $mysqli->prepare("INSERT INTO images (image) VALUES(?)");
+					$null = NULL;
+					$stmt->bind_param("b", $null);
+					$stmt->send_long_data(0, $data);
+					$stmt->execute();
+			
+			}
+
+
+
+
+		}
+	}
+					
+}
+
+
+
+
+
+
+insert_image('files');
+
+	//$con->close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</body>
+
+</html>
+
+
+
