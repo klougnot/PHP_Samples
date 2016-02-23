@@ -1,0 +1,8 @@
+CREATE TABLE images (
+       id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+       image MEDIUMBLOB NOT NULL,
+       PRIMARY KEY (id)
+       );
+       
+       
+       Source: https://blogs.oracle.com/oswald/entry/php_s_mysqli_extension_storing
