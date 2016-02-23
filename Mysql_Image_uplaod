@@ -1,4 +1,4 @@
-CREATE TABLE test1 (
+CREATE TABLE images (
        id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
        image MEDIUMBLOB NOT NULL,
        PRIMARY KEY (id) 
