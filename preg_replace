@@ -5,3 +5,9 @@
    $tpl_docmucment = preg_replace($regex, $data, $tpl_text);
     echo $tpl_docmucment;
 ?>
+
+
+//http://www.regular-expressions.info/characters.html
+//Most regular expression flavors treat the brace { as a literal character, unless it is part of a repetition operator like a{1,3}. 
+
+
