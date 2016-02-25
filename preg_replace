@@ -10,4 +10,19 @@
 //http://www.regular-expressions.info/characters.html
 //Most regular expression flavors treat the brace { as a literal character, unless it is part of a repetition operator like a{1,3}. 
 
+<?php
+
+/*
+Brackets like this are literal characters when used like this {[a-z]}
+When escaping special characters the backslash goes before the special character.  
+ie. \@ is the correct way to escape a special character.  \ first.
+
+*/
+   $tpl_text = "@[body]";
+   $regex = '/\@[[a-zA-Z0-9]+\]/';
+   $data = 'On todays news the stock market is tanking no its up.  i dont know';
+   $tpl_docmucment = preg_replace($regex, $data, $tpl_text);
+    echo $tpl_docmucment;
+?>
+
 
