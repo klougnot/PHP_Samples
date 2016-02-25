@@ -1,0 +1,7 @@
+<?php
+   $tpl_text = "{body}";
+   $regex = '/{[a-zA-Z0-9]+}/';
+   $data = 'On todays news the stock market is tanking no its up.  i dont know';
+   $tpl_docmucment = preg_replace($regex, $data, $tpl_text);
+    echo $tpl_docmucment;
+?>
